@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class ProductsController
  */
-@WebServlet({"/jsd.do","/jsd","/JinshidunController"})
+@WebServlet({"/jsdm.do","/jsdm","/JinshidunMonthController"})
 public class JinshidunMonthController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
