@@ -40,11 +40,11 @@
                 
                 //$.get $.post $.ajax...
                 
-                $.get("jsd.do",function(data,status){
+                $.get("jsdq.do",function(data,status){
     		
     		data =JSON.parse(data);
     		$.each(data,function(index,p){
-    			names.push(p.month);
+    			names.push(p.quarter);
     			datas.push(p.number);
     			
     		});

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.etc.entity.Month;
+import com.etc.entity.Quarter;
 import com.etc.entity.jinshidun;
 import com.etc.util.DBUtil;
 import com.google.gson.Gson;
@@ -36,7 +37,7 @@ public class JinshidunQuarterController extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		List<Month> list=(List<Month> )DBUtil.select("select id,month,number from jsd_quarter", Month.class);
+		List<Quarter> list=(List<Quarter> )DBUtil.select("select id,quarter,number from jsd_quarter", Quarter.class);
 		
 		Gson gson = new Gson();
 		String gsonStr=gson.toJson(list);
