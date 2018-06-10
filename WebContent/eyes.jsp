@@ -121,7 +121,7 @@
                 <div class = "kuan" id="bu16" type="button" value="" onclick="test4(this)"></div>
             </div>
         </div>
-        
+        <button type="button" class="btn btn-danger"><a href="index.html">返回</a></button>
     </div>
 </body>
 </html>

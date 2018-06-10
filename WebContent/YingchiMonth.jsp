@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dashboard | Dashboard</title>
+    <title>销量分析 | 销量分析</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,7 @@
     <link type="text/css" rel="stylesheet" href="styles/pace.css">
     <link type="text/css" rel="stylesheet" href="styles/jquery.news-ticker.css">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div>
@@ -38,64 +39,30 @@
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
             <div class="navbar-header">
                 <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">KAdmin</span><span style="display: none" class="logo-text-icon">µ</span></a></div>
+                <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">销量分析表</span><span style="display: none" class="logo-text-icon">µ</span></a></div>
             <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
                 
-                <form id="topbar-search" action="" method="" class="hidden-sm hidden-xs">
-                    <div class="input-icon right text-white"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="Search here..." class="form-control text-white"/></div>
-                </form>
-                <div class="news-update-box hidden-xs"><span class="text-uppercase mrm pull-left text-white">News:</span>
-                    <ul id="news-update" class="ticker list-unstyled">
-                        <li>Welcome to KAdmin - Responsive Multi-Style Admin Template</li>
-                        <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque.</li>
-                    </ul>
-                </div>
+                
+                
                 <ul class="nav navbar navbar-top-links navbar-right mbn">
-                    <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">3</span></a>
-                        
-                    </li>
-                    <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">7</span></a>
-                        
-                    </li>
-                    <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><span class="badge badge-yellow">8</span></a>
-                        
-                    </li>
-                    <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/avatar/48.jpg" alt="" class="img-responsive img-circle"/>&nbsp;<span class="hidden-xs">Robert John</span>&nbsp;<span class="caret"></span></a>
+                    
+                    <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle">组员信息</span>&nbsp;<span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-user pull-right">
-                            <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
-                            <li><a href="#"><i class="fa fa-calendar"></i>My Calendar</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
-                            <li><a href="#"><i class="fa fa-tasks"></i>My Tasks<span class="badge badge-success">7</span></a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                            <li><a href="Login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>组员1</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>组员1</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>组员1<span class="badge badge-danger">3</span></a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>组员1<span class="badge badge-success">7</span></a></li>
+                            
+                            <li><a href="#"><i class="fa fa-user"></i>组员1</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>组员1</a></li>
                         </ul>
                     </li>
-                    <li id="topbar-chat" class="hidden-xs"><a href="javascript:void(0)" data-step="4" data-intro="&lt;b&gt;Form chat&lt;/b&gt; keep you connecting with other coworker" data-position="left" class="btn-chat"><i class="fa fa-comments"></i><span class="badge badge-info">3</span></a></li>
+                   
                 </ul>
                 
             </div>
         </nav>
-            <!--BEGIN MODAL CONFIG PORTLET-->
-            <div id="modal-config" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
-                                &times;</button>
-                            <h4 class="modal-title">
-                                Modal title</h4>
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-default">
-                                Close</button>
-                            <button type="button" class="btn btn-primary">
-                                Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <!--END MODAL CONFIG PORTLET-->
         </div>
         <!--END TOPBAR-->
@@ -107,62 +74,28 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="dashboard.html"><i class="fa fa-tachometer fa-fw">
+                    <li class="active"><a href="index.html"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Dashboard</span></a></li>
-                    <li><a href="Layout.html"><i class="fa fa-desktop fa-fw">
+                    </i><span class="menu-title">首页</span></a></li>
+                    <li><a href="zongxiaoliang.jsp"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">Layouts</span></a>
+                    </i><span class="menu-title">总销量图</span></a>
                        
                     </li>
-                    <li><a href="UIElements.html"><i class="fa fa-send-o fa-fw">
+                    <li><a href="zongneicun.jsp"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">UI Elements</span></a>
+                    </i><span class="menu-title">内存条</span></a>
                        
                     </li>
-                    <li><a href="Forms.html"><i class="fa fa-edit fa-fw">
+                    <li><a href="xianka.jsp"><i class="fa fa-edit fa-fw">
                         <div class="icon-bg bg-violet"></div>
-                    </i><span class="menu-title">Forms</span></a>
+                    </i><span class="menu-title">显卡</span></a>
                       
                     </li>
-                    <li><a href="Tables.html"><i class="fa fa-th-list fa-fw">
-                        <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">Tables</span></a>
-                          
-                    </li>
-                    <li><a href="DataGrid.html"><i class="fa fa-database fa-fw">
-                        <div class="icon-bg bg-red"></div>
-                    </i><span class="menu-title">Data Grids</span></a>
-                      
-                    </li>
-                    <li><a href="Pages.html"><i class="fa fa-file-o fa-fw">
-                        <div class="icon-bg bg-yellow"></div>
-                    </i><span class="menu-title">Pages</span></a>
-                       
-                    </li>
-                    <li><a href="Extras.html"><i class="fa fa-gift fa-fw">
-                        <div class="icon-bg bg-grey"></div>
-                    </i><span class="menu-title">Extras</span></a>
-                      
-                    </li>
-                    <li><a href="Dropdown.html"><i class="fa fa-sitemap fa-fw">
-                        <div class="icon-bg bg-dark"></div>
-                    </i><span class="menu-title">Multi-Level Dropdown</span></a>
-                      
-                    </li>
-                    <li><a href="Email.html"><i class="fa fa-envelope-o">
-                        <div class="icon-bg bg-primary"></div>
-                    </i><span class="menu-title">Email</span></a>
-                      
-                    </li>
-                    <li><a href="Charts.html"><i class="fa fa-bar-chart-o fa-fw">
-                        <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Charts</span></a>
-                       
-                    </li>
-                    <li><a href="Animation.html"><i class="fa fa-slack fa-fw">
+                    
+                    <li><a href="eyes.jsp"><i class="fa fa-slack fa-fw">
                         <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">Animations</span></a></li>
+                    </i><span class="menu-title">嘿嘿嘿</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -249,7 +182,7 @@
                            
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="height:400px "></div>
-    
+    <div id="main1" style="height:400px "></div>
      <!-- ECharts单文件引入 -->
     <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
     
@@ -280,11 +213,11 @@
                 
                 //$.get $.post $.ajax...
                 
-                $.get("wgy.do",function(data,status){
+                $.get("ycm.do",function(data,status){
     		
     		data =JSON.parse(data);
     		$.each(data,function(index,p){
-    			names.push(p.year);
+    			names.push(p.month);
     			datas.push(p.number);
     			
     		});
@@ -346,6 +279,7 @@
                 });
    
             }
+            
         );
         
     </script>

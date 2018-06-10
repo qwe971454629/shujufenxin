@@ -77,23 +77,23 @@
                     <li class="active"><a href="index.html"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">首页</span></a></li>
-                    <li><a href="#"><i class="fa fa-desktop fa-fw">
+                    <li><a href="zongxiaoliang.jsp"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">总销量图</span></a>
                        
                     </li>
-                    <li><a href="UIElements.html"><i class="fa fa-send-o fa-fw">
+                    <li><a href="zongneicun.jsp"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">内存条</span></a>
                        
                     </li>
-                    <li><a href="Forms.html"><i class="fa fa-edit fa-fw">
+                    <li><a href="xianka,jsp"><i class="fa fa-edit fa-fw">
                         <div class="icon-bg bg-violet"></div>
                     </i><span class="menu-title">显卡</span></a>
                       
-
-                       
                     </li>
+                   
+
                     <li><a href="eyes.jsp"><i class="fa fa-slack fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">嘿嘿嘿</span></a></li>
@@ -214,18 +214,18 @@
                 
                 //$.get $.post $.ajax...
                 
-                $.get("ptj",function(data,status){
+                $.get("jsdy.do",function(data,status){
     		
     		data =JSON.parse(data);
     		$.each(data,function(index,p){
-    			names.push(p.name);
-    			datas.push(p.shuliang);
+    			names.push(p.year);
+    			datas.push(p.number);
     			
     		});
     		
     		var option = {
     		        title : {
-    		            text: '内存条各品牌销售量',
+    		            text: '金士顿年销售量',
     		            subtext: '京东网提供'
     		        },
     		        tooltip : {
@@ -284,9 +284,8 @@
         );
         
     </script>
-
-
-           
+    
+   
                         
                             
                                         

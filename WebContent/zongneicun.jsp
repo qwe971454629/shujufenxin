@@ -77,20 +77,19 @@
                     <li class="active"><a href="index.html"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">首页</span></a></li>
-                    <li><a href="#"><i class="fa fa-desktop fa-fw">
+                    <li><a href="zongxiaoliang.jsp"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">总销量图</span></a>
                        
                     </li>
-                    <li><a href="UIElements.html"><i class="fa fa-send-o fa-fw">
+                    <li><a href="zongneineicun.jsp"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">内存条</span></a>
                        
                     </li>
-                    <li><a href="Forms.html"><i class="fa fa-edit fa-fw">
+                    <li><a href="xianka.jsp"><i class="fa fa-edit fa-fw">
                         <div class="icon-bg bg-violet"></div>
                     </i><span class="menu-title">显卡</span></a>
-                      
 
                        
                     </li>
@@ -181,112 +180,62 @@
                 <!--BEGIN CONTENT-->
                 
                            
-          <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="height:400px "></div>
-    <div id="main1" style="height:400px "></div>
-     <!-- ECharts单文件引入 -->
-    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
-    
-    <!-- 模块加载器配置echarts和所需图表的路径 -->
-    <script type="text/javascript">
-        // 路径配置
+              <div style="visibility:hidden;">金士顿</div>
+           <div class="col-lg-3">
+               <a href="JinshidunMonth.jsp" style="text-align:center;"><div><img src="images/bg/59804aaeNe843c328.jpg" width="100" height="100" /></div>
+               <div><h4>金士顿月销售量</h4></div></a>
+           </div>
+			<div class="col-lg-3">
+               <a href="JinshidunQuarter.jsp" style="text-align:center;"><div><img src="images/bg/59804aaeNe843c328.jpg" width="100" height="100" /></div>
+               <div><h4>金士顿季销售量</h4></div></a>
+           </div>
+           <div class="col-lg-3">
+               <a href="JinshidunYear.jsp" style="text-align:center;"><div><img src="images/bg/59804aaeNe843c328.jpg" width="100" height="100" /></div>
+               <div><h4>金士顿年销售量</h4></div></a>
+           </div>
+          
            
-        require.config({
-            paths: {
-                echarts: 'http://echarts.baidu.com/build/dist'
-            }
-        });
-        require(
-            [
-                'echarts',
-                'echarts/chart/line',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
-                'echarts/chart/bar'
-            ],
-            function (ec) {
-                // 基于准备好的dom，初始化echarts图表
-                var myChart = ec.init(document.getElementById('main')); 
-                
-                var names =[];//列名               
-                var datas =[];//显示的数据值
-                
-                //定义一个数组
-                ////从controller中得到数据 ajax
-                
-                //$.get $.post $.ajax...
-                
-                $.get("ptj",function(data,status){
-    		
-    		data =JSON.parse(data);
-    		$.each(data,function(index,p){
-    			names.push(p.name);
-    			datas.push(p.shuliang);
-    			
-    		});
-    		
-    		var option = {
-    		        title : {
-    		            text: '内存条各品牌销售量',
-    		            subtext: '京东网提供'
-    		        },
-    		        tooltip : {
-    		            trigger: 'axis'
-    		        },
-    		        legend: {
-    		            data:['销售量']
-    		        },
-    		        toolbox: {
-    		            show : true,
-    		            feature : {
-    		                mark : {show: true},
-    		                dataView : {show: true, readOnly: false},
-    		                magicType : {show: true, type: ['line', 'bar']},
-    		                restore : {show: true},
-    		                saveAsImage : {show: true}
-    		            }
-    		        },
-    		        calculable : true,
-    		        xAxis : [
-    		            {
-    		                type : 'category',
-    		                boundaryGap : false,
-    		                data : names//['周一','周二','周三','周四','周五','周六','周日']
-    		            }
-    		        ],
-    		        yAxis : [
-    		            {
-    		                type : 'value',
-    		                axisLabel : {
-    		                    formatter: '{value}'
-    		                }
-    		            }
-    		        ],
-    		        series : [
-    		            {
-    		                name:'销售量',
-    		                type:'line',
-    		                data:datas//[11, 11, 15, 13, 12, 13, 10],
-
-    		            },
-    		            
-    		        ]
-    		        
-    		    };
-                 
-                         // 为echarts对象加载数据 
-                         myChart.setOption(option); 
-                	
-                	
-                	
-                });
-   
-            }
-            
-        );
-        
-    </script>
-
-
-           
+           <div style="visibility:hidden;">影驰</div>
+           <div class="col-lg-3">
+               <a href="YingchiMonth.jsp" style="text-align:center;"><div><img src="images/bg/5695b77bN88e4b54a.png" width="100" height="100" /></div>
+               <div><h4>影驰月销售量</h4></div></a>
+           </div>
+			<div class="col-lg-3">
+               <a href="YingchiQuarter.jsp" style="text-align:center;"><div><img src="images/bg/5695b77bN88e4b54a.png" width="100" height="100" /></div>
+               <div><h4>影驰季销售量</h4></div></a>
+           </div>
+           <div class="col-lg-3">
+               <a href="YingchiYear.jsp" style="text-align:center;"><div><img src="images/bg/5695b77bN88e4b54a.png" width="100" height="100" /></div>
+               <div><h4>影驰年销售量</h4></div></a>
+           </div>
+           <div style="visibility:hidden;">光威</div>
+           <div class="col-lg-3">
+               <a href="GuangweiMonth.jsp" style="text-align:center;"><div><img src="images/bg/56949e73Nb173f2b2.jpg" width="100" height="100" /></div>
+               <div><h4>光威月销售量</h4></div></a>
+           </div>
+			<div class="col-lg-3">
+               <a href="GuangweiQuarter.jsp" style="text-align:center;"><div><img src="images/bg/56949e73Nb173f2b2.jpg" width="100" height="100" /></div>
+               <div><h4>光威季销售量</h4></div></a>
+           </div>
+           <div class="col-lg-3">
+               <a href="GuangweiYear.jsp" style="text-align:center;"><div><img src="images/bg/56949e73Nb173f2b2.jpg" width="100" height="100" /></div>
+               <div><h4>光威年销售量</h4></div></a>
+           </div>
+           <div style="visibility:hidden;">海盗船</div>
+           <div class="col-lg-3">
+               <a href="HaidaochuanMonth.jsp" style="text-align:center;"><div><img src="images/bg/598126c0N41426d15.jpg" width="100" height="100" /></div>
+               <div><h4>海盗船月销售量</h4></div></a>
+           </div>
+			<div class="col-lg-3">
+               <a href="HaidaochuanQuarter.jsp" style="text-align:center;"><div><img src="images/bg/598126c0N41426d15.jpg" width="100" height="100" /></div>
+               <div><h4>海盗船季销售量</h4></div></a>
+           </div>
+          <div class="col-lg-3">
+               <a href="HaidaochuanYear.jsp" style="text-align:center;"><div><img src="images/bg/598126c0N41426d15.jpg" width="100" height="100" /></div>
+               <div><h4>海盗船年销售量</h4></div></a>
+           </div>
+          
+                    
                         
                             
                                         
