@@ -133,7 +133,7 @@
 	                                <a class="nav-link" href="qchquarter.jsp"><i class="icon-calculator"></i>季销量</a>
 	                            </ul>
 	                            <ul class="nav-item">
-	                                <a class="nav-link" href="qchquarter.jsp"><i class="icon-calculator"></i>月销量</a>
+	                                <a class="nav-link" href="qchy.jsp"><i class="icon-calculator"></i>月销量</a>
 	                            </ul> 
                             </li>
                             
@@ -229,89 +229,121 @@
 
         <!-- Main content -->
         <main class="main">            
-             <!-- Breadcrumb -->
+            <!-- Breadcrumb -->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">管理员管理</li>
-                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/AdminController?op=queryVerify">待审核名单</a></li>
+                <li class="breadcrumb-item">影驰显卡</li>
+                <li class="breadcrumb-item"><a href="yingchimonth2.jsp">月销量</a></li>
             </ol>
-			
                
 			<!-- 开始改 -->
             <div class="container-fluid">
                 <div class="animated fadeIn">                                      
                     <div class="row">
                         <div class="col-lg-12">
-                        <div class="card">
-                                <div class="card-header">
-                                    <i class="fa fa-align-justify"></i> 待审核名单
-                                </div>
-                                
-                                <div class="card-block">
-                                	<!-- <span>显示 <select name="pageSize" id="pageSize" class="pageSize">
-                                          <option value="5">5</option>
-                                          <option value="10">10</option>
-                                          <option value="15">15</option>
-                                      </select> 条记录</span> -->
-                                	<span class="col-lg-4 input-group" style="float:right;margin:0em 0em 1em 0em;padding:0">
-		                        		<input type="search" id="vNameLike" name="input2-group2" class="form-control" placeholder="search">
-		                                <span class="input-group-btn">
-		                                    <button type="button" id="btnSearch" class="btn btn-primary">搜索</button>
-		                                </span>
-                        			</span>
-                        			<br/>
-                                    <table class="table table-bordered table-striped table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th>账号</th>
-                                                <th>邮箱</th>
-                                                <th>手机号</th>
-                                                <th>注册日期</th>
-                                                <th>操作</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        	<!-- 循环开始 -->
-                                        	<c:if test="${pd.data!=null}">
-												<c:forEach items="${pd.data}" var="verify">
-		                                            <tr>
-		                                                <td>${verify.name}</td>
-		                                                <td>${verify.email}</td>
-		                                                <td>${verify.mobile}</td>
-		                                                <td>
-		                                                	<fmt:parseDate value="${verify.addtime}" pattern="yyyy-MM-dd HH:mm:ss" var="myDate" /> 
-		                                                	<fmt:formatDate value="${myDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-		                                                <td>
-		                                                    <button class="btn btn-outline-success btnVerify" style="border:0;font-size:15px" value="${verify.id}"><i class="fa fa-magic"></i>&nbsp;审核</button>
-		                                                    <button class="btn btn-outline-danger delVerify" style="border:0;font-size:15px" value="${verify.id}"><i class="fa fa-rss"></i>&nbsp;删除</button>
-		                                                </td>
-		                                            </tr>
-		                                        </c:forEach>
-											</c:if>
-                                            <!-- 循环结束 -->
-                                        </tbody>
-                                    </table>
-                                    <nav>
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0)" id="prePage">上一页</a></li>
-                                            <%--注意这里   begin="1" 从1开始  end="${pd.totalPage}" 到几结束    var="index" 变量的值 --%>
-                                            <c:forEach begin="1" end="${pd.totalPage}" var="index">
-												<%--激活当前页码显示效果 --%>
-												<c:if test="${index == pd.page}">
-		                                            <li class="page-item active">
-		                                                <a class="page-link pageNo" href="javascript:void(0)">${index}</a>
-		                                            </li>
-	                                            </c:if>
-												<c:if test="${index != pd.page}">
-		                                            <li class="page-item"><a class="page-link pageNo" href="javascript:void(0)">${index}</a>
-		                                            </li>
-		                                        </c:if>
-											</c:forEach>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0)" id="nextPage">下一页</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+                        	
+                             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px "></div>
+    
+     <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    
+    <!-- 模块加载器配置echarts和所需图表的路径 -->
+    <script type="text/javascript">
+        // 路径配置
+           
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/line',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
+                'echarts/chart/bar'
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var names =[];//列名               
+                var datas =[];//显示的数据值
+                
+                //定义一个数组
+                ////从controller中得到数据 ajax
+                
+                //$.get $.post $.ajax...
+                
+                $.get("${pageContext.request.contextPath}/ycm",function(data,status){
+    		
+    		data =JSON.parse(data);
+    		$.each(data,function(index,p){
+    			names.push(p.month);
+    			datas.push(p.number);
+    			
+    		});
+    		
+    		var option = {
+    		        title : {
+    		            text: '影驰品牌销售量',
+    		            subtext: '京东网提供'
+    		        },
+    		        tooltip : {
+    		            trigger: 'axis'
+    		        },
+    		        legend: {
+    		            data:['销售量']
+    		        },
+    		        toolbox: {
+    		            show : true,
+    		            feature : {
+    		                mark : {show: true},
+    		                dataView : {show: true, readOnly: false},
+    		                magicType : {show: true, type: ['line', 'bar']},
+    		                restore : {show: true},
+    		                saveAsImage : {show: true}
+    		            }
+    		        },
+    		        calculable : true,
+    		        xAxis : [
+    		            {
+    		                type : 'category',
+    		                boundaryGap : false,
+    		                data : names//['周一','周二','周三','周四','周五','周六','周日']
+    		            }
+    		        ],
+    		        yAxis : [
+    		            {
+    		                type : 'value',
+    		                axisLabel : {
+    		                    formatter: '{value}'
+    		                }
+    		            }
+    		        ],
+    		        series : [
+    		            {
+    		                name:'销售量',
+    		                type:'line',
+    		                data:datas//[11, 11, 15, 13, 12, 13, 10],
+
+    		            },
+    		            
+    		        ]
+    		        
+    		    };
+                 
+                         // 为echarts对象加载数据 
+                         myChart.setOption(option); 
+                	
+                	
+                	
+                });
+   
+            }
+            
+        );
+        
+    </script>
                             
                         </div>
                         <!--/.col-->

@@ -64,118 +64,13 @@
     </style>
 </head>
 
-<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-	<header class="app-header navbar">
-        <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">☰</button>
-        <a class="navbar-brand" href="#"></a>
-        
-        <!-- waitwait --> 
-        <ul class="nav navbar-nav hidden-md-down">
-            <li class="nav-item">
-                <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
-            </li>
-        </ul>      
-        <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">                   
-                    <span class="hidden-md-down">${admin.name}</span>
-                    <img src="${pageContext.request.contextPath}/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header text-center">
-                        <strong>设置</strong>
-                    </div>
-
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/front/info_edit.jsp"><i class="fa fa-user"></i> 个人信息</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/front/pwd_edit.jsp"><i class="fa fa-wrench"></i> 修改密码</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/AdminController?op=exit""><i class="fa fa-usd"></i> 退出</a>
-                    <div class="divider"></div>
-                    
-                </div>
-            </li>
-        </ul>
-    </header>
-
-    <div class="app-body">
-        <div class="sidebar">
-            <nav class="sidebar-nav">
-                <ul class="nav">
-	                <!--wait 
-	                <li class="nav-item">
-	                        <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">☆</span></a>
-	                </li> -->                   
-                    <li class="nav-title"> 爬虫数据</li>                   
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>数据存盘</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-puzzle"></i>商店信息</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-puzzle"></i> 销售额</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>数据分析</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-star"></i>商店信息</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-star"></i> 销售额</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>数据管理</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-calculator"></i>商店信息</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-calculator"></i> 销售额</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="divider"></li>
-                    <li class="nav-title">
-                    	<!--  -->
-                    	管理员管理
-                    </li>
-                     <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> 管理员管理</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/AdminController?op=queryVerify"><i class="icon-puzzle"></i> 待审核名单</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/AdminController?op=queryAdmin"><i class="icon-puzzle"></i> 管理员列表</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>。。。。。 </a>                      
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Main content -->
-        <main class="main">            
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">管理员管理</li>
-                <li class="breadcrumb-item">管理员编辑</li>
-            </ol>
-
+<body class="app flex-row align-items-center">	
 			<!-- 开始改 -->
 		    <div class="container">  
-			    <form id="formAdmin" action="${pageContext.request.contextPath}/AdminController?op=editAdmin&id=${admin.id}" method="post">
+			    <form id="formAdmin">
 					<div class="card">
 			      	 <div class="card-block">
-			      	 	<p><input type="hidden" value="${admin_one.id}" /></p>
+			      	 	<div style="visibility:hidden;">${admin_one.id}</div>
 			             <%-- <!-- 头像 -->     
 			             <div class="form-group row">
 			                  <label class="col-md-3 form-control-label">头像</label>
@@ -260,19 +155,13 @@
 			              </div>	              	          
 				      </div>
 				      <div class="card-footer" style="text-align:center;">
-				          <button type="submit" class="editAdmin btn btn-sm btn-primary" value="${admin_one.id}"><i class="fa fa-dot-circle-o"></i> 确定</button>
+				          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> 保存</button>
 				          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> 重置</button>
 				      </div>
 			      </div>
 			      </form>
 			  </div>
 			  <!-- 改完了-->
-		</main>
-    </div>
-
-    <footer class="app-footer">
-    	Copyright &copy; 2018.Company name All rights reserved.
-    </footer>
 
 	<!-- Bootstrap and necessary plugins -->
 	<script src="${pageContext.request.contextPath}/assets/js/libs/jquery.min.js"></script>
@@ -284,6 +173,9 @@
     <!-- GenesisUI main scripts -->
     <script src="${pageContext.request.contextPath}/js/app.js"></script>
     
+    <!-- layer的使用  开始-->
+	<script src="${pageContext.request.contextPath}/front/layer.js"></script>
+	
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
@@ -294,7 +186,7 @@
 			rules:{
 				name:{
 					required:true,
-					minlength:3,
+					minlength:2,
 					maxlength:16
 				},
 				pwd:{
@@ -325,30 +217,29 @@
 			focusCleanup:true,
 			success:"valid",
 			submitHandler:function(form){
-				$(form).ajaxSubmit();
-				var index = parent.layer.getFrameIndex(window.name);
-				parent.$('.btn-refresh').click();
-				parent.layer.close(index);
+				ajaxSubmit();
 			}
 		}); 
-	
-    	/* $(".editAdmin").click(function(){
-    		var btn = $(this);
-    		layer.msg('调用成功', {icon: 2});
-	    		$.post("${pageContext.request.contextPath}/AdminController",{"op":"editAdmin","id":$(btn).val()},function(data,status){ 
-	    			layer.msg('跳转成功', {icon: 2});
-    				//尝试获取status data
-    				console.log("status:"+status+",data :"+data);    				
-    				if(data=="ok"){ 
-    					layer.msg('编辑成功!',{icon: 6,time:1000},function(){
-							  //重新刷新页面
-	    					  window.parent.location.reload(); 	   				 
-						});
-    				}else{
-				    	layer.msg('编辑失败', {icon: 1});
-					}
-				}); 
-    	}); */
+			
+		function ajaxSubmit() {
+            $.ajax({
+                async : false,
+                cache : false,
+                type : 'POST',
+                data : $("#formAdmin").serialize(),
+                url : '${pageContext.request.contextPath}/AdminController?op=editAdmin&id='+${admin_one.id},//请求的action路径             
+                success : function(data) { //请求成功后处理函数
+                    layer.msg('保存成功!',{icon: 1,time:2000},function(){	
+		        		parent.location.reload();//刷新父窗口    
+		        	    parent.layer.closeAll();//关闭所有layer窗口
+		        		location.href = "${pageContext.request.contextPath}/AdminController?op=queryAdmin";
+					});
+                },
+                error : function(e) {//请求失败处理函数  
+                	layer.msg('保存失败', {icon: 2});
+                }
+            });
+        }        		  
 	});
 	</script>
 </body>

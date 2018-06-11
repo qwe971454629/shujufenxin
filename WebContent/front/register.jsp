@@ -64,7 +64,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card mx-2">
-                	<form action="${pageContext.request.contextPath}/AdminController?op=register" id="form-verify-add" method="post">
+                	<form id="form-verify-add">
                     <div class="card-block p-2">
                         <h1>注册</h1>
                         <p class="text-muted">Create your account</p>                  	
@@ -107,6 +107,9 @@
 	<script src="${pageContext.request.contextPath}/assets/js/libs/tether.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/libs/bootstrap.min.js"></script>
 	
+	<!-- layer的使用  开始-->
+	<script src="${pageContext.request.contextPath}/front/layer.js"></script>
+	
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
@@ -117,11 +120,13 @@
 			rules:{
 				name:{
 					required:true,
-					minlength:3,
+					minlength:2,
 					maxlength:16
 				},
 				password:{
 					required:true,
+					minlength:3,
+					maxlength:16
 				},
 				password2:{
 					required:true,
@@ -140,12 +145,26 @@
 			focusCleanup:true,
 			success:"valid",
 			submitHandler:function(form){
-				$(form).ajaxSubmit();
-				var index = parent.layer.getFrameIndex(window.name);
-				parent.$('.btn-refresh').click();
-				parent.layer.close(index);
+				ajaxSubmit();
 			}
 		});
+		function ajaxSubmit() {
+            $.ajax({
+                async : false,
+                cache : false,
+                type : 'POST',
+                data : $("#form-verify-add").serialize(),
+                url : "${pageContext.request.contextPath}/AdminController?op=register",//请求的action路径             
+                success : function(data) { //请求成功后处理函数
+                    layer.msg('注册成功!请进行登录',{icon: 1,time:2000},function(){	
+		        		location.href = "${pageContext.request.contextPath}/front/login.jsp";
+					});
+                },
+                error : function() {//请求失败处理函数  
+                	layer.msg('注册失败', {icon: 2});
+                }
+            });
+        }
 	});
 	</script>
 </body>

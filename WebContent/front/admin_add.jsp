@@ -65,195 +65,96 @@
     </style>
 </head>
 
-<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-	<header class="app-header navbar">
-        <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">☰</button>
-        <a class="navbar-brand" href="#"></a>
-        
-        <!-- waitwait --> 
-        <ul class="nav navbar-nav hidden-md-down">
-            <li class="nav-item">
-                <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
-            </li>
-        </ul>      
-        <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">                   
-                    <span class="hidden-md-down">${admin.name}</span>
-                    <img src="${pageContext.request.contextPath}/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header text-center">
-                        <strong>设置</strong>
-                    </div>
-
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/front/info_edit.jsp"><i class="fa fa-user"></i> 个人信息</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/front/pwd_edit.jsp"><i class="fa fa-wrench"></i> 修改密码</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/AdminController?op=exit""><i class="fa fa-usd"></i> 退出</a>
-                    <div class="divider"></div>
-                    
-                </div>
-            </li>
-        </ul>
-    </header>
-
-    <div class="app-body">
-        <div class="sidebar">
-            <nav class="sidebar-nav">
-                <ul class="nav">
-	                <!--wait 
-	                <li class="nav-item">
-	                        <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">☆</span></a>
-	                </li> -->                   
-                    <li class="nav-title"> 爬虫数据</li>                   
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>数据存盘</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-puzzle"></i>商店信息</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-puzzle"></i> 销售额</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>数据分析</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-star"></i>商店信息</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-star"></i> 销售额</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>数据管理</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-calculator"></i>商店信息</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-calculator"></i> 销售额</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="divider"></li>
-                    <li class="nav-title">管理员管理
-                    </li>
-                     <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> 管理员管理</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/AdminController?op=queryVerify"><i class="icon-puzzle"></i> 待审核名单</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/AdminController?op=queryAdmin"><i class="icon-puzzle"></i> 管理员列表</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>。。。。。 </a>                      
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Main content -->
-        <main class="main">            
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">管理员管理</li>
-                <li class="breadcrumb-item">新增管理员</li>
-            </ol>
-
-			<!-- 开始改 -->
-		    <div class="container">  
-			    <form id="formAdminAdd" action="${pageContext.request.contextPath}/AdminController?op=addAdmin" method="post">
-					<div class="card">
-			      	 <div class="card-block">	
-			             <!-- 头像 -->     
-			             <!-- <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">头像</label>
-			                  <div class="col-md-9">
-			                      <input type="file" id="image" name="image">
-			                  </div>
-			              </div> -->
-			              <!-- 账号 -->
-			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">账号</label>
-			                  <div class="formControls col-md-8">
-			                      <input type="text" name="name" id="name" class="input-text valid" placeholder="账号">
-			                  </div>
-			              </div>
-			              <!-- 初始密码 -->
-			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">初始密码</label>
-			                  <div class="col-md-8">
-			                      <input type="password" name="pwd" id="pwd" class="input-text valid" placeholder="初始密码">
-			                  </div>
-			              </div>
-			              <!-- 确认密码 -->
-			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label" for="password-input">确认密码</label>
-			                  <div class="col-md-8">
-			                      <input type="password" id="pwd2" name="pwd2" class="input-text valid" placeholder="确认密码">
-			                  </div>
-			              </div>
-			              <!-- 性别 -->
-			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">性别</label>
-			                  <div class="col-md-8">
-			                      <label>
-			                          <input type="radio" id="inline-radio1" name="sex" value="男" checked>男
-			                      </label>
-			                      <label>
-			                          <input type="radio" id="inline-radio2" name="sex" value="女">女
-			                      </label>
-			                  </div>
-			              </div>
-			              <!-- 邮箱 -->
-			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">邮箱</label>
-			                  <div class="col-md-8">
-			                      <input type="text" name="email" id="email" class="input-text valid" placeholder="邮箱">
-			                  </div>
-			              </div>
-			              <!-- 手机 -->
-			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">手机号</label>
-			                  <div class="col-md-8">
-			                      <input type="text" name="mobile" id="mobile" class="input-text valid" placeholder="手机号码">
-			                  </div>
-			              </div>
-			              <!-- 权限 -->
-			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label" for="status">权限</label>
-			                  <div class="col-md-8">
-			                      <select name="status" id="status">
-			                          <option value="0">普通管理员</option>
-			                          <option value="1">超级管理员</option>
-			                      </select>
-			                  </div>
-			              </div>	              	          
-				      </div>
-				      <div class="card-footer" style="text-align:center;">
-				          <button type="submit" class="addAdmin btn btn-sm btn-primary" onclick="addAdmin()"><i class="fa fa-dot-circle-o"></i> 确定</button>
-				          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> 重置</button>
-				      </div>
-			      </div>
-			      </form>
-			  </div>
-			<!-- 改完了-->
-		</main>
-    </div>
-
-    <footer class="app-footer">
-    	Copyright &copy; 2018.Company name All rights reserved.
-    </footer>
-			  
+<body class="app flex-row align-items-center">   
+	<!-- 开始改 -->
+    <div class="container">  
+	    <form id="formAdminAdd" enctype="multipart/form-data">
+			<div class="card">
+	      	 <div class="card-block">
+	      	 	<div style="visibility:hidden;">s</div>
+	      	 	 <!-- 预览 --> 
+	      	 	 <%-- <div class="form-group row">
+	                  <label class="col-md-3 form-control-label">预览</label>
+	                  <div class="col-md-9">
+	      	 				<img id="previewImg" src="${pageContext.request.contextPath}/imag/preview.jpg" width="80" height="80" />
+	      	 		  </div>
+	             </div>
+	             <!-- 头像 -->     
+	             <div class="form-group row">
+	                  <label class="col-md-3 form-control-label">头像</label>
+	                  <div class="col-md-9">
+	                      <input type="file" id="image" name="image" onchange="showPreview(this)">
+	                  </div>
+	              </div> --%>
+	              <!-- 账号 -->
+	              <div class="form-group row">
+	                  <label class="col-md-3 form-control-label">账号</label>
+	                  <div class="formControls col-md-8">
+	                      <input type="text" name="name" id="name" class="input-text valid" placeholder="账号">
+	                  </div>
+	              </div>
+	              <!-- 初始密码 -->
+	              <div class="form-group row">
+	                  <label class="col-md-3 form-control-label">初始密码</label>
+	                  <div class="col-md-8">
+	                      <input type="password" name="pwd" id="pwd" class="input-text valid" placeholder="初始密码">
+	                  </div>
+	              </div>
+	              <!-- 确认密码 -->
+	              <div class="form-group row">
+	                  <label class="col-md-3 form-control-label" for="password-input">确认密码</label>
+	                  <div class="col-md-8">
+	                      <input type="password" id="pwd2" name="pwd2" class="input-text valid" placeholder="确认密码">
+	                  </div>
+	              </div>
+	              <!-- 性别 -->
+	              <div class="form-group row">
+	                  <label class="col-md-3 form-control-label">性别</label>
+	                  <div class="col-md-8">
+	                      <label>
+	                          <input type="radio" id="inline-radio1" name="sex" value="男" checked>男
+	                      </label>
+	                      <label>
+	                          <input type="radio" id="inline-radio2" name="sex" value="女">女
+	                      </label>
+	                  </div>
+	              </div>
+	              <!-- 邮箱 -->
+	              <div class="form-group row">
+	                  <label class="col-md-3 form-control-label">邮箱</label>
+	                  <div class="col-md-8">
+	                      <input type="text" name="email" id="email" class="input-text valid" placeholder="邮箱">
+	                  </div>
+	              </div>
+	              <!-- 手机 -->
+	              <div class="form-group row">
+	                  <label class="col-md-3 form-control-label">手机号</label>
+	                  <div class="col-md-8">
+	                      <input type="text" name="mobile" id="mobile" class="input-text valid" placeholder="手机号码">
+	                  </div>
+	              </div>	              
+	              <!-- 权限 -->
+	              <!-- 若登录者为超级管理员 -->
+                  <c:if test="${admin.status==1}">
+		              <div class="form-group row">
+		                  <label class="col-md-3 form-control-label" for="status">权限</label>
+		                  <div class="col-md-8">
+		                      <select name="status" id="status">
+		                          <option value="0">普通管理员</option>
+		                          <option value="1">超级管理员</option>
+		                      </select>
+		                  </div>
+		              </div>
+		           </c:if>			                         	          
+		      </div>
+		      <div class="card-footer" style="text-align:center;">
+		          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> 确定</button>
+		          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> 重置</button>
+		      </div>
+	      </div>
+	      </form>
+	  </div>
+	<!-- 改完了-->
 
 	<!-- Bootstrap and necessary plugins -->
 	<script src="${pageContext.request.contextPath}/assets/js/libs/jquery.min.js"></script>
@@ -264,18 +165,23 @@
 	<script src="${pageContext.request.contextPath}/assets/js/libs/Chart.min.js"></script>
     <!-- GenesisUI main scripts -->
     <script src="${pageContext.request.contextPath}/js/app.js"></script>
+    
+    <!-- layer的使用  开始-->
+	<script src="${pageContext.request.contextPath}/front/layer.js"></script>
 	
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
-	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/messages_zh.js"></script> 
+	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-form.js"></script>
+	 
 	<script type="text/javascript">
-	$(function(){		
+	$(function(){
 		$("#formAdminAdd").validate({
 			rules:{
 				name:{
 					required:true,
-					minlength:3,
+					minlength:2,
 					maxlength:16
 				},
 				pwd:{
@@ -306,33 +212,43 @@
 			focusCleanup:true,
 			success:"valid",
 			submitHandler:function(form){
-				$(form).ajaxSubmit();
-				var index = parent.layer.getFrameIndex(window.name);
-				parent.$('.btn-refresh').click();
-				parent.layer.close(index);
+				ajaxSubmit();
 			}
-		}); 
-	
-    	/* $(".addAdmin").click(function(){
-    		layer.msg('调用成功', {icon: 2});
-	    		$.post("${pageContext.request.contextPath}/AdminController?op=addAdmin",function(data,status){ 
-	    			layer.msg('跳转成功', {icon: 2});
-    				//尝试获取status data
-    				console.log("status:"+status+",data :"+data);    				
-    				if(data=="ok"){ 
-    					layer.msg('添加成功!',{icon: 6,time:1000},function(){
-    						 var index=parent.layer.getFrameIndex(window.name);
-	    					  parent.layer.close(index);
-							  //重新刷新页面
-	    					  window.parent.location.reload(); 
-	    					 
-						});
-    				}else{
-				    	layer.msg('添加失败', {icon: 1});
-					}
-				}); 
-    	}); */
-    	
+		}); 		
+		function ajaxSubmit() {
+            $.ajax({
+                async : false,
+                cache : false,
+                type : 'POST',
+                data : $("#formAdminAdd").serialize(),
+                url : "${pageContext.request.contextPath}/AdminController?op=addAdmin",//请求的action路径             
+                success : function(data) { //请求成功后处理函数
+                    layer.msg('添加成功!',{icon: 1,time:2000},function(){	
+		        		parent.location.reload();//刷新父窗口    
+		        	    parent.layer.closeAll();//关闭所有layer窗口
+		        		location.href = "${pageContext.request.contextPath}/AdminController?op=queryAdmin";
+					});
+                },
+                error : function() {//请求失败处理函数  
+                	layer.msg('添加失败', {icon: 2});
+                }
+            });
+        }
+
+		//使用js实现文件上传图片的预览	
+		$("#image").change(function(){
+			var file=this.files[0];
+			var reader=new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload=function(e){
+				$("#previewImg").attr("src",e.target.result);
+			}				
+		});	
+		function showPreview(obj){
+			var str = obj.value;
+			document.getElementById("previewImg").innerHTML = 
+				"<img src = '" + str + "' />";
+		}		
 	});
 	</script>
 </body>

@@ -70,37 +70,139 @@
 	                        <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">☆</span></a>
 	                </li> -->                   
                     <li class="nav-title"> 爬虫数据</li>                   
+                    
                     <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>数据存盘</a>
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>总销售额</a>
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-puzzle"></i>商店信息</a>
+                                <a class="nav-link" href="zongxiaoliang.jsp"><i class="icon-star"></i>内存条</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-puzzle"></i> 销售额</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>数据分析</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-star"></i>商店信息</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-star"></i> 销售额</a>
+                                <a class="nav-link" href="zongxiaoliang2.jsp"><i class="icon-star"></i> 显卡</a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item nav-dropdown">
                         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>数据管理</a>
                         <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-font-awesome.html"><i class="icon-calculator"></i>商店信息</a>
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>影驰内存条</a>
+                            
+	                            <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="yingchimonth.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="yingchiquarter.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="yingchiyear.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="icons-simple-line-icons.html"><i class="icon-calculator"></i> 销售额</a>
+                                                        <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>影驰显卡</a>
+                            
+	                            <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="yingchimonth2.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="yingchiquarter2.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="yingchiyear2.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
                             </li>
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>索泰</a>
+                            <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="suotaimonth.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="suotaiquarter.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="suotaiyear.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
+                            </li>
+                            
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>七彩虹</a>
+                            <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="qchmonth.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="qchquarter.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="qchy.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
+                            </li>
+                            
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>微星</a>
+                            <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="wxm.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="wxq.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="wxy.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
+                            </li>
+                            
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>光威</a>
+                           <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="gwm.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="gwq.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="gwy.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
+                            </li>
+                           
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>金士顿</a>
+                            <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="jsdm.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="jsdq.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="jsdy.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
+                            </li>
+                            
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>海盗船</a>
+                           <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="hdcm.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="hdcq.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="hdcy.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
+                            </li>
+                            
+                             
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-calculator"></i>技嘉</a>
+                           <ul class="nav-dropdown-items">
+	                                <a class="nav-link" href="jjm.jsp"><i class="icon-calculator"></i>年销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="jjq.jsp"><i class="icon-calculator"></i>季销量</a>
+	                            </ul>
+	                            <ul class="nav-item">
+	                                <a class="nav-link" href="jjy.jsp"><i class="icon-calculator"></i>月销量</a>
+	                            </ul> 
+                            </li>
+                            
                         </ul>
                     </li>
 
@@ -119,7 +221,7 @@
                         </ul>
                     </li>
                     <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>。。。。。 </a>                      
+                        <a class="nav-link nav-dropdown-toggle" href="eyes.jsp"><i class="icon-star"></i>。。。。。 </a>                      
                     </li>
                 </ul>
             </nav>

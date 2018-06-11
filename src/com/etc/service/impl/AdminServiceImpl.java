@@ -60,9 +60,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
-	public Admin queryAdminUI(int id) {
+	public Admin queryAdminOne(int id) {
 		// TODO Auto-generated method stub
-		return ad.queryAdminUI(id);
+		return ad.queryAdminOne(id);
 	}
 	
 	@Override

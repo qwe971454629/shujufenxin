@@ -32,19 +32,19 @@
             <div class="col-md-8">
                 <div class="card-group mb-0">
                     <div class="card p-2">
-                    	<form action="${pageContext.request.contextPath}/AdminController?op=login" method="post">
+                    	<form id="formLogin" action="${pageContext.request.contextPath}/AdminController?op=login" method="post">
 	                        <div class="card-block">
 	                            <h1>登录</h1>
 	                            <p class="text-muted">How do you do?</p>
 	                            <div class="input-group mb-1">
 	                                <span class="input-group-addon"><i class="icon-user"></i>
 	                                </span>
-	                                <input type="text" class="form-control" name="name" placeholder="账号">
+	                                <input type="text" class="form-control" name="name" id="name" placeholder="账号">
 	                            </div>
 	                            <div class="input-group mb-2">
 	                                <span class="input-group-addon"><i class="icon-lock"></i>
 	                                </span>
-	                                <input type="password" class="form-control" name="pwd" placeholder="密码">
+	                                <input type="password" class="form-control" name="pwd" id="pwd" placeholder="密码">
 	                            </div>
 	                            <div class="row">
 	                                <div class="col-6">
@@ -75,5 +75,9 @@
 	<script src="${pageContext.request.contextPath}/assets/js/libs/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/libs/tether.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/libs/bootstrap.min.js"></script>
+	
+	<!-- layer的使用  开始-->
+	<script src="${pageContext.request.contextPath}/front/layer.js"></script>
+	</script>
 </body>
 </html>

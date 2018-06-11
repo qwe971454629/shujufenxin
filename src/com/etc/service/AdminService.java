@@ -31,7 +31,7 @@ public interface AdminService {
 	boolean addAdmin(Admin admin);
 
 	//查询管理员某条记录
-	Admin queryAdminUI(int id);
+	Admin queryAdminOne(int id);
 	
 	//修改管理员
 	boolean editAdmin(Admin admin);

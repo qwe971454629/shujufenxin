@@ -66,10 +66,9 @@ public class AdminController extends HttpServlet {
 			// 创建对象
 			Verify verify = new Verify(name, password,email,mobile);
 			// 调用方法
-			boolean flag = as.register(verify);
-			if(flag==true) System.out.println("注册成功");
+			as.register(verify);
 			// 跳转
-			response.sendRedirect("front/login.jsp");
+			//response.sendRedirect("front/login.jsp");
 		}
 		
 		/*登录*/
@@ -79,7 +78,6 @@ public class AdminController extends HttpServlet {
 			String pwd = request.getParameter("pwd");
 			// 调用adminService的方法
 			Admin admin = as.login(name, pwd);
-			System.out.println(admin);
 			if (null != admin) {
 				// 用户名和密码正确
 				HttpSession session = request.getSession();
@@ -88,8 +86,7 @@ public class AdminController extends HttpServlet {
 				// 跳转到前台 front/index.jsp页面
 				request.getRequestDispatcher("AdminController?op=queryAdmin").forward(request, response);
 			}else {
-				// 用户名或者密码错误 ,跳转到登录页面去 // 1 转发 // 2重定向
-				response.sendRedirect("front/login.jsp");
+				request.getRequestDispatcher("front/login.jsp").forward(request, response);
 			}
 		}
 		
@@ -107,7 +104,6 @@ public class AdminController extends HttpServlet {
 			HttpSession session=request.getSession();
 			Object obj=session.getAttribute("admin");
 			if(null!=obj) {
-			System.out.println("pageSize:"+request.getParameter("pageSize"));
 			//获取page pageSize enameLike
 			if(null!=request.getParameter("page")){
 				page =Integer.parseInt(request.getParameter("page"));
@@ -119,7 +115,6 @@ public class AdminController extends HttpServlet {
 				vNameLike = request.getParameter("vNameLike");
 				//此时需要对中文进行转换
 				vNameLike = new String(vNameLike.getBytes("ISO-8859-1"),"utf-8");
-				System.out.println("vNameLike:"+vNameLike);
 			}
 			PageData<Verify> pd=as.queryVerify(page, pageSize, vNameLike);			
 			//将pd对象存储到请求范围内
@@ -133,7 +128,6 @@ public class AdminController extends HttpServlet {
 			
 		/*审核注册的用户*/
 		if("verify".equals(op)){		
-			System.out.println("verify:id:"+request.getParameter("id"));
 			if(null!=request.getParameter("id")) {
 				int id=Integer.parseInt(request.getParameter("id"));
 				boolean flag=as.verify(id);
@@ -146,7 +140,6 @@ public class AdminController extends HttpServlet {
 			if(null!=request.getParameter("id")) {
 				int id=Integer.parseInt(request.getParameter("id"));
 				boolean flag=as.delVerify(id);
-				System.out.println(flag);
 				response.getWriter().print(flag==true?"ok":"");
 			}			
 		}
@@ -156,41 +149,40 @@ public class AdminController extends HttpServlet {
 			//判断查询管理员是否是管理员操作？
 			//加入session的判断
 			HttpSession session=request.getSession();
-			Object obj=session.getAttribute("admin");
-			if(null!=obj) {
-			//查询所有员工信息
-			//获取page pageSize enameLike
-			if(null!=request.getParameter("page")){
-				//获取op的值
-				page =Integer.parseInt(request.getParameter("page"));
-			}
-			if(null!=request.getParameter("pageSize")){
-				//获取op的值
-				pageSize =Integer.parseInt(request.getParameter("pageSize"));
-			}
-			if(null!=request.getParameter("vNameLike")){
-				//获取op的值
-				vNameLike = request.getParameter("vNameLike");
-				vNameLike = new String(vNameLike.getBytes("ISO-8859-1"),"utf-8");
-			}
-			PageData<Admin> pd=as.queryAdmin(page, pageSize, vNameLike);			
-			//将pd对象存储到请求范围内
-			request.setAttribute("pd", pd);			
-			//转发到showEmp.jsp页面
-			request.getRequestDispatcher("front/admin_list.jsp").forward(request, response);
+			Admin admin=(Admin) session.getAttribute("admin");
+			if(null!=admin) {
+				//查询所有员工信息
+				//获取page pageSize vNameLike
+				if(null!=request.getParameter("page")){
+					// 获取page的值
+					page =Integer.parseInt(request.getParameter("page"));
+				}
+				if(null!=request.getParameter("pageSize")){
+					// 获取pageSize的值
+					pageSize =Integer.parseInt(request.getParameter("pageSize"));
+				}
+				if(null!=request.getParameter("vNameLike")){
+					// 获取vNameLike的值
+					vNameLike = request.getParameter("vNameLike");
+					vNameLike = new String(vNameLike.getBytes("ISO-8859-1"),"utf-8");
+				}
+				PageData<Admin> pd=as.queryAdmin(page, pageSize, vNameLike);			
+				// 将pd对象存储到请求范围内
+				request.setAttribute("pd", pd);
+				// 跳转到admin_list.jsp页面
+				request.getRequestDispatcher("front/admin_list.jsp").forward(request, response);
 			}else {
+				// 跳转到login.jsp页面
 				response.sendRedirect("front/login.jsp");
 			}
 		}
 		
 		/*删除管理员*/
 		if("delAdmin".equals(op)){
-			System.out.println("delAdmin:id:"+request.getParameter("id"));
 			if(null!=request.getParameter("id")) {
 				int id=Integer.parseInt(request.getParameter("id"));
-				boolean flag=as.delAdmin(id);
-				System.out.println(flag);
-				response.getWriter().print(flag==true?"ok":"");
+				// 调用方法
+				as.delAdmin(id);
 			}			
 		}
 		
@@ -202,26 +194,34 @@ public class AdminController extends HttpServlet {
 			String email=request.getParameter("email");
 			String mobile=request.getParameter("mobile");
 			String image=request.getParameter("image");
-			int status=Integer.parseInt(request.getParameter("status"));
-			System.out.println(name+","+pwd+","+sex+","+email+","+mobile+","+image+","+status);
-			Admin admin=new Admin(name,pwd,sex,email,mobile,image,status);
-			
+			int status=0;
+			if(null!=request.getParameter("status")) 
+				status=Integer.parseInt(request.getParameter("status"));			
+			// 创建对象
+			Admin admin=new Admin(name,pwd,sex,email,mobile,image,status);			
 			// 调用方法
-			boolean flag = as.addAdmin(admin);
-			response.getWriter().print(flag==true?"ok":"");
-			// forward 转发
-			request.getRequestDispatcher("AdminController?op=queryAdmin").forward(request, response);				
+			as.addAdmin(admin);				
 		}
 		
 		/*超级管理员点击修改按钮*/
 		if("queryAdminUI".equals(op)) {  
 			if(null!=request.getParameter("id")) {
 				int id=Integer.parseInt(request.getParameter("id"));
-				Admin admin_one=as.queryAdminUI(id);
-				System.out.println(admin_one);
+				Admin admin_one=as.queryAdminOne(id);
 				request.setAttribute("admin_one", admin_one);	
-				//转发到editAdmin.jsp页面
+				//跳转到editAdmin.jsp页面
 				request.getRequestDispatcher("front/admin_edit.jsp").forward(request, response);
+			}					
+		}
+		
+		/*查看管理员信息*/
+		if("queryAdminShow".equals(op)) {  
+			if(null!=request.getParameter("id")) {
+				int id=Integer.parseInt(request.getParameter("id"));
+				Admin admin_one=as.queryAdminOne(id);
+				request.setAttribute("admin_one", admin_one);	
+				//跳转到admin_show.jsp页面
+				request.getRequestDispatcher("front/admin_show.jsp").forward(request, response);
 			}					
 		}
 		
@@ -237,11 +237,8 @@ public class AdminController extends HttpServlet {
 				String image=request.getParameter("image");
 				int status=Integer.parseInt(request.getParameter("status"));			
 				Admin admin=new Admin(id,name,pwd,sex,email,mobile,image,status);
-				
-				boolean flag=as.editAdmin(admin);
-				System.out.println(flag);
-				response.getWriter().print(flag==true?"ok":"");
-				request.getRequestDispatcher("AdminController?op=queryAdmin").forward(request, response);
+				//调用方法
+				as.editAdmin(admin);
 			}					
 		}
 		
@@ -255,11 +252,8 @@ public class AdminController extends HttpServlet {
 				String mobile=request.getParameter("mobile");
 				String image=request.getParameter("image");			
 				Admin admin=new Admin(id,name,sex,email,mobile,image);
-				
-				boolean flag=as.infoEdit(admin);
-				System.out.println(flag);
-				//response.getWriter().print(flag==true?"ok":"");
-				request.getRequestDispatcher("front/login.jsp").forward(request, response);
+				//调用方法
+				as.infoEdit(admin);
 			}					
 		}
 		
@@ -269,18 +263,8 @@ public class AdminController extends HttpServlet {
 				int id=Integer.parseInt(request.getParameter("id"));
 				String pwd=request.getParameter("pwd");		
 				Admin admin=new Admin(id,pwd);
-				
-				boolean flag=as.pwdEdit(admin);
-				System.out.println(flag);
-				/*response.setHeader("Content-type", "text/html;charset=UTF-8");  
-				//这句话的意思，是告诉servlet用UTF-8转码，而不是用默认的ISO8859  
-				response.setCharacterEncoding("UTF-8");  
-				PrintWriter out = response.getWriter();
-				out.print("<script>alert('修改成功');</script>");
-				out.flush();
-				out.close();*/
-				//request.getSession().removeAttribute("admin");
-				request.getRequestDispatcher("front/login.jsp").forward(request, response);
+				//调用方法
+				as.pwdEdit(admin);
 			}					
 		}
 	}

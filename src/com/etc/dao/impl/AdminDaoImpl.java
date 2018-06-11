@@ -26,8 +26,8 @@ public class AdminDaoImpl implements AdminDao {
 
 	@Override
 	public PageData<Verify> queryVerify(int page, int pageSize, String vNameLike) {
-		PageData<Verify> pd = DBUtil.getPage("select * from verify where name like ?", page, pageSize, Verify.class,
-				"%" + vNameLike + "%");
+		PageData<Verify> pd = DBUtil.getPage("select * from verify where name like ? or email like ? or mobile like ?", page, pageSize, Verify.class,
+				"%" + vNameLike + "%","%" + vNameLike + "%","%" + vNameLike + "%");
 		return pd;
 	}
 
@@ -52,8 +52,8 @@ public class AdminDaoImpl implements AdminDao {
 	
 	@Override
 	public PageData<Admin> queryAdmin(int page, int pageSize, String vNameLike) {
-		PageData<Admin> pd = DBUtil.getPage("select * from admin where name like ?", page, pageSize,Admin.class,
-				"%" + vNameLike + "%");
+		PageData<Admin> pd = DBUtil.getPage("select * from admin where name like ? or sex like ? or email like ? or mobile like ?", page, pageSize,Admin.class,
+				"%" + vNameLike + "%","%" + vNameLike + "%","%" + vNameLike + "%","%" + vNameLike + "%");
 		return pd;
 	}
 	
@@ -69,7 +69,7 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public Admin queryAdminUI(int id) {
+	public Admin queryAdminOne(int id) {
 		Admin admin = ((List<Admin>)DBUtil.select("select * from admin where id=?",Admin.class,id)).get(0);
 		return admin;
 	}

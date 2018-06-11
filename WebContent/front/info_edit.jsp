@@ -79,8 +79,8 @@
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">                   
-                    <span class="hidden-md-down">${admin.name}</span>
-                    <img src="${pageContext.request.contextPath}/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                    <span style="color:black;"><b>${admin.name}</b>&nbsp;&nbsp;&nbsp;</span>
+                    <%-- <img src="${pageContext.request.contextPath}/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"> --%>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header text-center">
@@ -173,7 +173,7 @@
 
 			<!-- 开始改 -->
 			<div class="container">  
-			    <form id="formAdmin" action="${pageContext.request.contextPath}/AdminController?op=infoEdit&id=${admin.id}" method="post">
+			    <form id="formAdmin">
 					<div class="card">
 			      	 <div class="card-block">
 			             <%-- <!-- 头像 -->     
@@ -228,7 +228,7 @@
 			              </div>	              	          
 				      </div>
 				      <div class="card-footer" style="text-align:center;">
-				          <button type="submit" class="editAdmin btn btn-sm btn-primary" value="${admin.id}"><i class="fa fa-dot-circle-o"></i> 保存</button>
+				          <button type="submit" class="btn btn-sm btn-primary" value="${admin.id}"><i class="fa fa-dot-circle-o"></i> 保存</button>
 				          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> 重置</button>
 				      </div>
 			      </div>
@@ -252,6 +252,9 @@
     <!-- GenesisUI main scripts -->
     <script src="${pageContext.request.contextPath}/js/app.js"></script>
     
+    <!-- layer的使用  开始-->
+	<script src="${pageContext.request.contextPath}/front/layer.js"></script>
+	
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
@@ -262,7 +265,7 @@
 			rules:{
 				name:{
 					required:true,
-					minlength:3,
+					minlength:2,
 					maxlength:16
 				},
 				sex:{
@@ -281,12 +284,27 @@
 			focusCleanup:true,
 			success:"valid",
 			submitHandler:function(form){
-				$(form).ajaxSubmit();
-				var index = parent.layer.getFrameIndex(window.name);
-				parent.$('.btn-refresh').click();
-				parent.layer.close(index);
+				ajaxSubmit();
 			}
 		}); 
+		
+		function ajaxSubmit() {
+            $.ajax({
+                async : false,
+                cache : false,
+                type : 'POST',
+                data : $("#formAdmin").serialize(),
+                url : '${pageContext.request.contextPath}/AdminController?op=infoEdit&id='+${admin.id},//请求的action路径             
+                success : function(data) { //请求成功后处理函数
+                    layer.msg('保存成功!请重新登录!',{icon: 1,time:2000},function(){	
+		        		location.href = "${pageContext.request.contextPath}/AdminController?op=exit";
+					});
+                },
+                error : function(e) {//请求失败处理函数  
+                	layer.msg('添加失败', {icon: 2});
+                }
+            });
+        }		
 	});
 	</script>
 </body>

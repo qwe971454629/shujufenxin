@@ -79,8 +79,8 @@
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">                   
-                    <span class="hidden-md-down">${admin.name}</span>
-                    <img src="${pageContext.request.contextPath}/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                    <span style="color:black;"><b>${admin.name}</b>&nbsp;&nbsp;&nbsp;</span>
+                    <%-- <img src="${pageContext.request.contextPath}/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"> --%>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header text-center">
@@ -173,33 +173,33 @@
 
 			<!-- 开始改 -->
 		    <div class="container">  
-			    <form id="formAdmin" action="${pageContext.request.contextPath}/AdminController?op=pwdEdit&id=${admin.id}" method="post">
+			    <form id="formAdmin">
 					<div class="card">
 			      	 <div class="card-block">
 			              <!-- 原密码 -->
 			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">原密码</label>
+			                  <label class="col-md-3 form-control-label">原密码:</label>
 			                  <div class="col-md-8">
 			                      <input type="password" class="input-text valid" value="${admin.pwd}" placeholder="原密码" readonly="readonly">
 			                  </div>
 			              </div>
 			              <!-- 新密码 -->
 			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label">新密码</label>
+			                  <label class="col-md-3 form-control-label">新密码:</label>
 			                  <div class="col-md-8">
 			                      <input type="password" name="pwd" id="pwd" class="input-text valid" placeholder="新密码">
 			                  </div>
 			              </div>
 			              <!-- 确认密码 -->
 			              <div class="form-group row">
-			                  <label class="col-md-3 form-control-label" for="password-input">确认密码</label>
+			                  <label class="col-md-3 form-control-label" for="password-input">确认密码:</label>
 			                  <div class="col-md-8">
 			                      <input type="password" id="pwd2" name="pwd2" class="input-text valid" placeholder="确认密码">
 			                  </div>
 			              </div>                    	          
 				      </div>
 				      <div class="card-footer" style="text-align:center;">
-				          <button type="submit" class="editAdmin btn btn-sm btn-primary" value="${admin.id}"><i class="fa fa-dot-circle-o"></i> 确定</button>
+				          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> 确定</button>
 				          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> 重置</button>
 				      </div>
 			      </div>
@@ -223,6 +223,9 @@
     <!-- GenesisUI main scripts -->
     <script src="${pageContext.request.contextPath}/js/app.js"></script>
     
+    <!-- layer的使用  开始-->
+	<script src="${pageContext.request.contextPath}/front/layer.js"></script>
+	
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
@@ -249,12 +252,26 @@
 			focusCleanup:true,
 			success:"valid",
 			submitHandler:function(form){
-				$(form).ajaxSubmit();
-				var index = parent.layer.getFrameIndex(window.name);
-				parent.$('.btn-refresh').click();
-				parent.layer.close(index);
+				ajaxSubmit();
 			}
 		}); 
+		function ajaxSubmit() {
+            $.ajax({
+                async : false,
+                cache : false,
+                type : 'POST',
+                data : $("#formAdmin").serialize(),
+                url :'${pageContext.request.contextPath}/AdminController?op=pwdEdit&id='+${admin.id},//请求的action路径             
+                success : function(data) { //请求成功后处理函数
+                    layer.msg('保存成功!请重新登录',{icon: 1,time:2000},function(){
+		        		location.href = "${pageContext.request.contextPath}/AdminController?op=exit";
+					});
+                },
+                error : function(e) {//请求失败处理函数  
+                	layer.msg('保存失败', {icon: 2});
+                }
+            });
+        }		
 	});
 	</script>
 </body>
